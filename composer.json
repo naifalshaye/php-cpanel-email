@@ -1,0 +1,28 @@
+{
+    "name": "naif/php-cpanel-email",
+    "description": "Manage cPanel Email Addresses",
+    "keywords": [
+      "cPanel",
+      "email",
+      "email_address",
+      "php"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Naif Alshaye",
+            "email": "naif@naif.io"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "^6.3@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Naif\\cPanelMail\\": "src/"
+        }
+    }
+}
