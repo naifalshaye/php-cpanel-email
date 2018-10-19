@@ -5,7 +5,7 @@
       "cpanel",
       "email",
       "email_address",
-      "php",
+      "php"
     ],
     "type": "library",
     "license": "MIT",
