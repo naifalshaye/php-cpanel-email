@@ -109,4 +109,51 @@ class cPanel
             }
         }
     }
+
+    /**
+     * @param $email_address
+     * @param $password
+     * @return array
+     */
+    public function changePassword($email_address,$password)
+    {
+        if ($email_address) {
+            $email = new Email();
+            $email->domain = config('Config.domain');
+            $email->user = $email_address;
+            try {
+                $response = $this->email()->updatePassword($email,$password);
+                if ($response) {
+                    return ['status'=>'success', 'message'=>'password has been changed successfully'];
+                }
+                return ['status'=>'error', 'message'=>'Failed to change password!'];
+            } catch (\Exception $e){
+                return ['status'=>'error', 'message'=>$e->getMessage()];
+            }
+        }
+    }
+
+    /**
+     * @param $email_address
+     * @param $password
+     * @return array
+     */
+    public function changeQuota($email_address, $quota)
+    {
+        if ($email_address) {
+            $email = new Email();
+            $email->domain = config('Config.domain');
+            $email->user = $email_address;
+            $email->diskquota = $quota;
+            try {
+                $response = $this->email()->updateQuota($email);
+                if ($response) {
+                    return ['status'=>'success', 'message'=>'Email disk quota has been changed successfully'];
+                }
+                return ['status'=>'error', 'message'=>'Failed to change email disk quota!'];
+            } catch (\Exception $e){
+                return ['status'=>'error', 'message'=>$e->getMessage()];
+            }
+        }
+    }
 }

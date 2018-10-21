@@ -121,14 +121,14 @@ class cPanelEmail extends cPanelBaseModule
      */
     public function updateQuota(Email $email)
     {
-        if (!$email->domain || !$email->user || ! $email->_diskquota){
+        if (!$email->domain || !$email->user || ! $email->diskquota){
             throw new \Exception("Invalid Email Object, must fill the domain, user and _diskquota properties.");
         }
         $this->cpanel->mergeFields([
             'cpanel_jsonapi_func' => 'editquota',
             'domain'              => $email->domain,
             'email'               => $email->user,
-            'quota'               => $email->_diskquota / 1024 / 1024, // convert to mb
+            'quota'               => $email->diskquota, // convert to mb
         ]);
         $this->getApiData();
         return true;
