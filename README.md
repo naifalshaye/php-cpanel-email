@@ -1,6 +1,12 @@
 # PHP Laravel cPanel
 A php laravel package to manage cPanel email accounts
 
+- Get a list of all email accounts.
+- Create a new email account.
+- Delete an email account.
+- Change an email account's password.
+- Change an email account's disk quota.
+
 ## Installation
 ```
 composer require naif/php-cpanel-email
@@ -63,7 +69,7 @@ Response:
 ]
 ```
 
-Delete an new email account
+Delete an email account
 ```php
 $cpanel->delete('email_address')
 
@@ -71,6 +77,28 @@ Response:
 [
   "status" => "success"
   "message" => "Email address has been deleted successfully"
+]
+```
+
+Change an email account's password
+```php
+$cpanel->changePassword('username','password')
+
+Response:
+[
+  "status" => "success"
+  "message" => "Password has been changed successfully"
+]
+```
+
+Change an email account's disk quota
+```php
+$cpanel->changeQuota('username',500)//quota as a number or 0 to set it as unlimited
+
+Response:
+[
+  "status" => "success"
+  "message" => "Email disk quota has been changed successfully"
 ]
 ```
 
