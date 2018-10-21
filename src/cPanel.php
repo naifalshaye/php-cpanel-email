@@ -124,7 +124,7 @@ class cPanel
             try {
                 $response = $this->email()->updatePassword($email,$password);
                 if ($response) {
-                    return ['status'=>'success', 'message'=>'password has been changed successfully'];
+                    return ['status'=>'success', 'message'=>'Password has been changed successfully'];
                 }
                 return ['status'=>'error', 'message'=>'Failed to change password!'];
             } catch (\Exception $e){
@@ -144,7 +144,8 @@ class cPanel
             $email = new Email();
             $email->domain = config('Config.domain');
             $email->user = $email_address;
-            $email->diskquota = $quota;
+            $email->_diskquota = str_pad($quota, 2, '0', STR_PAD_LEFT);
+
             try {
                 $response = $this->email()->updateQuota($email);
                 if ($response) {
