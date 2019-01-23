@@ -12,7 +12,7 @@ A php laravel package to manage cPanel email accounts
 composer require naif/php-cpanel-email
 ```
 
-Add service provider and alias to config/app.php
+If your Laravel below 5.5 you need to add service provider and alias to config/app.php
 ```
 Under Providers:
 \Naif\cPanelMail\cPanelServiceProvider::class,
